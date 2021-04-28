@@ -1,4 +1,5 @@
-const UPLOAD_PATH = 'F:/management-system/upload/upload-ebook' 
+const UPLOAD_PATH = 'F:/management-system/upload/upload-ebook'
+const UPLOAD_URL = 'http://localhost:8001/upload-ebook'
 
 module.exports = {
   CODE_ERROR: -1,
@@ -8,5 +9,8 @@ module.exports = {
   PWD_SALT: 'admin_imooc_node',
   PRIVATE_KEY: 'chen',
   JWT_EXPIRED: 60*60,
-  UPLOAD_PATH 
+  UPLOAD_PATH ,
+  UPLOAD_URL,
+  MIME_TYPE_EPUB: 'application/epub',
+
 }
