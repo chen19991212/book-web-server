@@ -1,6 +1,6 @@
 const express = require('express')
 const Result = require('../models/Result')
-const {login,findUser} = require('../services/user')
+const {login,findUser} = require('../services/userService')
 const { md5 , decode } = require('../utils')
 const {PWD_SALT,PRIVATE_KEY,JWT_EXPIRED} = require('../utils/constant')
 const { body, validationResult } = require('express-validator')

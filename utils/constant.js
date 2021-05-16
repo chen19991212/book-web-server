@@ -1,5 +1,6 @@
 const UPLOAD_PATH = 'F:/management-system/upload/upload-ebook'
 const UPLOAD_URL = 'http://localhost:8001/upload-ebook'
+const OLD_UPLOAD_URL = 'http://localhost:8001/book'
 
 module.exports = {
   CODE_ERROR: -1,

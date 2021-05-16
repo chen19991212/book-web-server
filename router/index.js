@@ -2,6 +2,7 @@ const express = require('express')
 const boom = require('boom')
 const userRouter = require('./user')
 const bookRouter = require('./book')
+const dataRouter = require('./data')
 const {
   CODE_ERROR
 } = require('../utils/constant')
@@ -16,6 +17,7 @@ router.get('/',(req, res)=>{
 })
 router.use('/user', userRouter)
 router.use('/book', bookRouter)
+router.use('/data', dataRouter)
 
 /* 
   集中处理404请求的中间件 
