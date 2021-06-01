@@ -19,7 +19,7 @@ class Book{
     }
   }
   createBookFromFile(file){
-    console.log(file);
+    //console.log(file);
     const {
       destination,
       filename,
@@ -111,6 +111,8 @@ class Book{
             cover,
             publisher
           } = epub.metadata
+          console.log(epub.metadata);
+          console.log('cover',cover);
           if(!title){
             reject(new Error('图书标题为空'))
           }else{
@@ -130,7 +132,7 @@ class Book{
                 fs.writeFileSync(coverPath, file,'binary')
                 this.coverPath = `/img/${this.originalName.split('.')[0]}.${suffix}`
                 this.cover = coverUrl
-                //console.log(this.coverPath);
+                console.log(this.coverPath);
                 resolve(this)
               }
             }
@@ -140,6 +142,7 @@ class Book{
               this.parseContents(epub).then(({chapters,chapterTree}) => {
                 this.contents = chapters
                 this.contentsTree = chapterTree
+                console.log(cover);
                 epub.getImage(cover,handleGetImage)
               })
             }catch(e){
@@ -214,10 +217,11 @@ class Book{
             reject(err)
           }else{
             const navMap = json.ncx.navMap
-            //console.log(navMap);
+            //console.log(navMap.navPoint);
             if(navMap.navPoint && navMap.navPoint.length > 0){;
               navMap.navPoint = findParent(navMap.navPoint)
               const newNavMap = flatten(navMap.navPoint)
+              //console.log(newNavMap);
               const chapters = []
               newNavMap.forEach((chapter, index) => {
                 //const nav = newNavMap[index]
@@ -249,6 +253,7 @@ class Book{
     return {
     fileName : this.fileName,
     cover : this.coverPath,
+    coverPath : this.coverPath,
     title : this.title,
     author : this.author,
     publisher : this.publisher,
@@ -272,7 +277,6 @@ class Book{
   //移除电子书文件
   reset(){
     if(Book.pathExists(this.filePath)){
-      console.log(111111111111111111);
       fs.unlinkSync(Book.genPath(this.filePath))
     }
     if(Book.pathExists(this.coverPath)){
@@ -300,6 +304,7 @@ class Book{
   //拼接封面URL
   static genCoverUrl(book){
     const { cover } = book
+    console.log(cover);
     if(cover){
       if(+book.updateType === 0){
         return `${OLD_UPLOAD_URL}${cover}`

@@ -15,7 +15,6 @@ class Result {
       }
     }
   }
-
   createResult(){
     if(!this.code){
       this.code = CODE_SUCCESS

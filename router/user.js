@@ -21,7 +21,6 @@ router.get('/info',(req, res, next)=>{
         new Result('用户信息查询失败').fail(res)
       }
     })
-    //res.json('...info')
   }
   
 })
@@ -40,6 +39,7 @@ router.post('/login',
   }else{
     let { username , password } = req.body
     password = md5(`${password}${PWD_SALT}`)
+    console.log(password);
     login(username,password).then(user => {
       if(!user || user.length === 0){
         new Result('登录失败').fail(res)

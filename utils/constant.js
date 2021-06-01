@@ -7,7 +7,7 @@ module.exports = {
   CODE_SUCCESS: 0,
   CODE_TOKEN_EXPIRED: -2,
   debug: true,
-  PWD_SALT: 'admin_imooc_node',
+  PWD_SALT: 'chen',
   PRIVATE_KEY: 'chen',
   JWT_EXPIRED: 60*60,
   UPLOAD_PATH ,
