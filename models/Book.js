@@ -304,7 +304,7 @@ class Book{
   //拼接封面URL
   static genCoverUrl(book){
     const { cover } = book
-    console.log(cover);
+    //console.log(cover);
     if(cover){
       if(+book.updateType === 0){
         return `${OLD_UPLOAD_URL}${cover}`
