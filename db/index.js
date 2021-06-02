@@ -1,14 +1,15 @@
 const mysql = require('mysql')
-const config = require('./config')
+const {local,server} = require('./config')
 const {debug}  = require('../utils/constant')
 const { isObject } = require('lodash')
 
 function connect(){
+  const {host,user,password,database} = server
   return mysql.createConnection({
-    host: config.host,
-    user: config.user,
-    password: config.password,
-    database: config.database,
+    host,
+    user,
+    password,
+    database,
     multipleStatements: true
   })
 }
